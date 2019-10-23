@@ -32,16 +32,26 @@ export class ElevatorController {
         }
     }
 
-    // Checks current floors of elevators and returns nearest elevator that isn't occupied
-    getNearestElevator(requestedFloor) {
+    // Checks current floors of elevators and returns index of nearest elevator that isn't occupied
+    getIndexNearestElevator(requestedFloor) {
         if (this.iteration === 0) {
-            return this.elevators[0];
+            return this.iteration;
         }
 
-        let nearest;
+        let indexNearest;
 
-        for (i = 0; i < elevators.length; i++) {
+        let above = requestedFloor + 1;
+        let below = requestedFloor - 1;
 
+        // Function is going to check if elevator at requested floor then work outwards down and up until finds elevator nearest floor
+        // At best, search will be O(1), at worst will be O(n) where n is floors I think?
+
+        if (this.floors[requestedFloor].length >= 1) {
+            return requestedFloor;
+        }
+
+        for (i = 0; i < this.floors.length; i++) {
+            
         }
     }
 
