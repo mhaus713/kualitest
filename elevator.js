@@ -1,26 +1,30 @@
 // elevator class that provides simulation methods to control each elevator
 
 export class Elevator {
-    constructor(topFloor, ) {
+    constructor() {
         this.maintenanceMode = false;
         this.numTrips = 0;
-        this.numFloors = 0;
-        this.topFloor = topFloor;
+        this.numFloorsTravelled = 0;
         this.maxFloorsTravelled = 100;
         this.currentFloor = 1;
+        this.occupied = false;
     }
 
+    //**** START OF REPORTER METHODS ***//
+
     reportOpen() {
-        return 'open';
+        return 'Door opened';
     }
 
     reportClose() {
-        return 'close';
+        return 'Door closed';
     }
 
     reportMove(floorNum) {
-        return 'moved to floor' + floorNum;
+        return 'moved to floor ' + floorNum;
     }
+
+    //*** START OF GETTER METHODS ***//
 
     getCurrentFloor() {
         return this.currentFloor;
@@ -30,13 +34,33 @@ export class Elevator {
         return this.numTrips;
     }
 
-    getFloorsPassed() {
-        return 
+    getFloorsTravelled() {
+        return this.numFloorsTravelled;
+    }
+
+    getCurrentFloor() {
+        return this.currentFloor;
     }
 
     getMaintenanceMode() {
         return this.maintenanceMode;
     }
+
+    getOccupied() {
+        return this.occupied;
+    }
+
+    //*** START OF SETTER METHODS ***//
+
+    setMaintenanceMode() {
+        this.maintenanceMode = true;
+    }
+
+    iterateFloorsTravelled() {
+        this.numFloorsTravelled++;
+    }
+
+    //*** START OF OPERATIONAL METHODS ***//
 
     goToFloor(floorNum) {
 
