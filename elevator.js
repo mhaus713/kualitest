@@ -8,6 +8,7 @@ export class Elevator {
         this.maxFloorsTravelled = 100;
         this.currentFloor = 1;
         this.occupied = false;
+        this.moving = false;
     }
 
     //**** START OF REPORTER METHODS ***//
@@ -50,10 +51,18 @@ export class Elevator {
         return this.occupied;
     }
 
+    getMoving() {
+        return this.moving;
+    }
+
     //*** START OF SETTER METHODS ***//
 
     setMaintenanceMode() {
         this.maintenanceMode = true;
+    }
+
+    setMoving() {
+        this.moving = !this.moving;
     }
 
     iterateFloorsTravelled() {
@@ -62,6 +71,7 @@ export class Elevator {
 
     //*** START OF OPERATIONAL METHODS ***//
 
+    // sends elevator to floor floorNum
     goToFloor(floorNum) {
 
     }
