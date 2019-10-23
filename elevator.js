@@ -1,6 +1,6 @@
 // elevator class that provides simulation methods to control each elevator
 
-export class Elevator {
+export default class Elevator {
     constructor() {
         this.maintenanceMode = false;
         this.numTrips = 0;
