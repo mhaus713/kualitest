@@ -73,6 +73,11 @@ export default class Elevator {
 
     // sends elevator to floor floorNum
     goToFloor(floorNum) {
+        // check if current floor is greater or less than floor number to increment or decrement
+        // loops for how many floors it is passing and reports moved to floor _____ of current floor num
+        // once it reaches floor opens door and changes to occupied and closes door
+        // if total floor count goes past 100 puts into maintenance mode
 
+        // this doesn't prevent from picking people up and moving to floor --- need to account for that
     }
 }

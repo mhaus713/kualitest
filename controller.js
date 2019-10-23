@@ -12,7 +12,7 @@ export class ElevatorController {
         // iteration used purely to check if it's the first iteration or not for efficiency
         this.iteration = 0;
 
-        this.instatiateFloors(numFloors);
+        this.instantiateFloors(numFloors);
         this.instantiateElevators(numElevators);
     }
 
@@ -44,19 +44,43 @@ export class ElevatorController {
         let below = requestedFloor - 1;
 
         // Function is going to check if elevator at requested floor then work outwards down and up until finds elevator nearest floor
-        // At best, search will be O(1), at worst will be O(n) where n is floors I think?
+        // At best, search will be O(1), at worst will be O(numElevators*n) where n is floors I think?
 
         if (this.floors[requestedFloor].length >= 1) {
             return requestedFloor;
         }
 
+        // checks length of array at index above or below and returns if it finds a non empty array
         for (i = 0; i < this.floors.length; i++) {
-            
+            if (this.floors[above].length !== 0 && above <= this.topFloor) {
+                // need to check if elevator at floor is occupied use checkElevatorsAtIndex
+                return above;
+            } else {
+                above++;
+            }
+            if (this.floors[below].length !== 0 && below >= this.groundFloor) {
+                // same Check as above
+                return below;
+            } else {
+                below--;
+            }
         }
     }
 
-    // Sends request to have elevator go to floor and sends nearest elevator to that floor
+    // checks if elevators are empty at floor index floorNum and returns false if they are occupied, returns index of elevator at current floor if elevator is not occupied
+    checkElevatorsAtIndex(floorNum) {
+        let elevatorAt = this.floors[floorNum];
+        for (i = 0; i < elevatorAt.length; i++) {
+            if (!elevatorAt[i].getMaintenanceMode()) {
+                return i;
+            }
+        }
+        return false;
+    }
+
+    // Sends request to have elevator go to floor and sends nearest elevator to that floor. Removes elevator at array and moves that elevator to array at floorNum
     requestFloor(floorNum) {
+        let nearest = this.getIndexNearestElevator(floorNum);
 
     }
 
